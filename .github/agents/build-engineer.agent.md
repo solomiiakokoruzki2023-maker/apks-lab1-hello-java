@@ -39,7 +39,7 @@ tools: ['codebase', 'editFiles', 'runCommands', 'search', 'changes']
 - `create-build`: використовує Skill `build-and-test`.
 - `create-actions`: використовує Skill `github-actions`.
 - `check`: лише перевіряє, нічого не змінює.
-- `init`: оркестратор, який послідовно викликає `git-init`, `create-project`, `create-build`, `create-actions`, `check` і зупиняється при першій помилці, не приховуючи її.
+- `init-project`: оркестратор, який послідовно викликає `git-init`, `create-project`, `create-build`, `create-actions`, `check` і зупиняється при першій помилці, не приховуючи її.
 
 # 6. Критерії успішного завершення
 
