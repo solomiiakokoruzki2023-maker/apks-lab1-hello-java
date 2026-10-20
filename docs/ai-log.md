@@ -60,3 +60,11 @@ Manifest виправлено: додано `tools`, розділ 5 перепи
 **Причина:** surefire 3.5.2 шукає класи за шаблонами `*Test`, `Test*`, `*Tests`, `*TestCase`, а ім'я `BasicAddition` не підпадає.
 **Рішення:** запит до Copilot: додати `includes` у конфігурацію surefire й оновити skill `build-and-test`.
 **Результат:** `Tests run: 1, Failures: 0, Errors: 0`, створено `target/hello.jar`, `java -jar` виводить `Hello, World!`.
+
+
+
+
+## Запис 8. create-actions і check
+**Запит:** запустити `create-actions.prompt.md` і `check.prompt.md` вставкою тексту в чат Agent (підказки `/` не показували наші prompts).
+**Результат create-actions:** створено `.github/workflows/ci.yml`: одна job, matrix ubuntu/windows/macos, запуск лише `ci.bat` та `bash ci.sh`.
+**Результат check:** 8 пунктів PASS, загальний PASS; файли не змінено.
