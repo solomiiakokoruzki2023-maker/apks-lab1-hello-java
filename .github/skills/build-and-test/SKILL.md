@@ -38,7 +38,7 @@ description: "Налаштовуй Maven build для Java 17 з JUnit 5, вик
 
 # Перевірки
 
-- `mvn test` завершується успішно, зокрема проходить `BasicAddition`.
+- `mvn test` завершується успішно, у виводі є `Tests run: 1`, а каталог `target/surefire-reports` існує.
 - `mvn clean verify` створює `target/hello.jar`.
 - Файл запускається командою `java -jar target/hello.jar` і виводить `Hello, World!`.
 - `ci.sh` і `ci.bat` обидва викликають `mvn clean verify` та перевіряють наявність `target/hello.jar`.
@@ -46,6 +46,7 @@ description: "Налаштовуй Maven build для Java 17 з JUnit 5, вик
 # Типова помилка та що робити
 
 - **JUnit 5 тест не виявляється:** перевір залежність JUnit Jupiter, сумісність `maven-surefire-plugin`, test package та відповідність package головному класу.
+- **Тест не підхоплений через ім'я класу:** перевір, що конфігурація `maven-surefire-plugin` включає `**/BasicAddition.java`; підтверди вивід `Tests run: 1` і наявність `target/surefire-reports`.
 - **`no main manifest attribute` або клас не знайдено:** перевір `Main-Class`, package `Hello` і конфігурацію `maven-jar-plugin`.
 - **JAR має інше ім’я або відсутній:** перевір `finalName` зі значенням `hello`, успіх `mvn clean verify` та перевірку шляху в CI-скрипті.
 - **Maven завершився помилкою:** збережи його ненульовий exit code, покажи діагностику та виправ першопричину; не маскуй збій.
