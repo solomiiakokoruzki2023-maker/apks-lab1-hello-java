@@ -52,3 +52,19 @@ Manifest виправлено: додано `tools`, розділ 5 перепи
 **Запит:** запустити `/init`.
 **Проблема:** спрацювала вбудована команда VS Code `/init`, яка створила `.github/copilot-instructions.md` і запропонувала налаштувати GitHub MCP. Наш prompt `init.prompt.md` не запустився.
 **Рішення:** зайвий файл видалено; prompt перейменовано на `init-project` через запит до Copilot, посилання в документації оновлено.
+
+
+## Запис 7. Запуск init-project і помилка з тестами
+**Запит:** запуск `init-project` вставкою тексту prompt у чат (VS Code не показав його в підказках).
+**Проблема:** `mvn clean verify` завершувався BUILD SUCCESS, але `BasicAddition` не виконувався (немає "Tests run"). Оркестратор правильно не оголосив успіх.
+**Причина:** surefire 3.5.2 шукає класи за шаблонами `*Test`, `Test*`, `*Tests`, `*TestCase`, а ім'я `BasicAddition` не підпадає.
+**Рішення:** запит до Copilot: додати `includes` у конфігурацію surefire й оновити skill `build-and-test`.
+**Результат:** `Tests run: 1, Failures: 0, Errors: 0`, створено `target/hello.jar`, `java -jar` виводить `Hello, World!`.
+
+
+
+
+## Запис 8. create-actions і check
+**Запит:** запустити `create-actions.prompt.md` і `check.prompt.md` вставкою тексту в чат Agent (підказки `/` не показували наші prompts).
+**Результат create-actions:** створено `.github/workflows/ci.yml`: одна job, matrix ubuntu/windows/macos, запуск лише `ci.bat` та `bash ci.sh`.
+**Результат check:** 8 пунктів PASS, загальний PASS; файли не змінено.
