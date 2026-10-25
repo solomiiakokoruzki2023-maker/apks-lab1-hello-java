@@ -68,3 +68,16 @@ Manifest виправлено: додано `tools`, розділ 5 перепи
 **Запит:** запустити `create-actions.prompt.md` і `check.prompt.md` вставкою тексту в чат Agent (підказки `/` не показували наші prompts).
 **Результат create-actions:** створено `.github/workflows/ci.yml`: одна job, matrix ubuntu/windows/macos, запуск лише `ci.bat` та `bash ci.sh`.
 **Результат check:** 8 пунктів PASS, загальний PASS; файли не змінено.
+
+
+
+## Запис 9. Закінчення рядків у ci.sh
+**Проблема:** у `ci.sh` було CRLF, що ламає запуск на Ubuntu і macOS.
+**Рішення:** змінено на LF і через запит до Copilot додано `.gitattributes`, щоб правила діяли на всіх ОС.
+
+
+
+## Запис 10. Конфлікт у pull request
+**Проблема:** PR мав конфлікт у `docs/ai-log.md`, бо ті самі файли змінювались і в `develop`, і в `feature`; через це Actions не запускались.
+**Рішення:** `develop` злито в `feature/hello-java`, конфлікт вирішено залишенням повнішої версії журналу.
+**Результат:** CI на ubuntu, windows і macos пройшов успішно.
